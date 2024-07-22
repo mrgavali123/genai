@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv('.env')
 # Configure the API key
 
 api_key = os.getenv('API_KEY').strip("'")
