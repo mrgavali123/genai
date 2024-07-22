@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv('.env')
 # Configure the API key
 
-api_key = os.getenv('API_KEY').strip("'")
+api_key = os.getenv("API_KEY")
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-pro')
 
@@ -55,10 +55,10 @@ st.markdown(
 # Function to create a MySQL connection
 def create_connection():
     return mysql.connector.connect(
-        host=os.getenv('DB_HOST').strip("'"),  # Replace with your MySQL host
-        user=os.getenv('DB_USER').strip("'"),    # Replace with your MySQL username
-        password=os.getenv('DB_PASSWORD').strip("'"),  # Replace with your MySQL password
-        database=os.getenv('DB_NAME').strip("'")    # Replace with your MySQL database name
+        host=os.getenv("DB_HOST"),  # Replace with your MySQL host
+        user=os.getenv("DB_USER"),    # Replace with your MySQL username
+        password=os.getenv("DB_PASSWORD"),  # Replace with your MySQL password
+        database=os.getenv("DB_NAME")   # Replace with your MySQL database name
     )
 
 # Function to initialize the MySQL database
