@@ -7,10 +7,12 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
-load_dotenv('.env')
-# Configure the API key
 
-api_key = os.getenv("API_KEY")
+# Load environment variables
+load_dotenv('.env')
+
+# Configure the API key
+api_key = os.getenv('API_KEY')
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-pro')
 
@@ -55,10 +57,10 @@ st.markdown(
 # Function to create a MySQL connection
 def create_connection():
     return mysql.connector.connect(
-        host=os.getenv("DB_HOST"),  # Replace with your MySQL host
-        user=os.getenv("DB_USER"),    # Replace with your MySQL username
-        password=os.getenv("DB_PASSWORD"),  # Replace with your MySQL password
-        database=os.getenv("DB_NAME")   # Replace with your MySQL database name
+        host=os.getenv('DB_HOST'),    # Replace with your MySQL host
+        user=os.getenv('DB_USER'),    # Replace with your MySQL username
+        password=os.getenv('DB_PASSWORD'),  # Replace with your MySQL password
+        database=os.getenv('DB_NAME')   # Replace with your MySQL database name
     )
 
 # Function to initialize the MySQL database
@@ -119,8 +121,8 @@ def display_chat_history():
 
 # Function to send email
 def send_email(to_email, subject, body):
-    from_email = os.getenv('EMAIL_USER').strip("'")
-    from_password = os.getenv('EMAIL_PASSWORD').strip("'") # Use an app password or OAuth2 token
+    from_email = os.getenv('EMAIL_USER')
+    from_password = os.getenv('EMAIL_PASSWORD') # Use an app password or OAuth2 token
 
     msg = MIMEMultipart()
     msg['From'] = from_email
